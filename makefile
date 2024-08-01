@@ -4,9 +4,10 @@
 
 NAME     = minishell
 CC       = cc
-INCLUDES = -I include
+RLDIR    = $(shell brew --prefix readline)
+INCLUDES = -I include -I$(RLDIR)/include
 CFLAGS   = -Wall -Wextra -Werror $(INCLUDES)
-LIBS     = -lreadline
+LIBS     = -lreadline -L$(RLDIR)/lib
 SRCS     = src/main.c\
            src/error.c\
            src/tokenize.c\
@@ -14,6 +15,11 @@ SRCS     = src/main.c\
            src/expand.c\
 		   src/parse.c\
 		   src/redirect.c\
+		   src/pipe.c\
+		   src/exec.c\
+		   src/signal.c\
+		   src/builtin.c\
+		   src/builtin_exit.c\
 
 OBJS     = $(SRCS:%.c=%.o)
 
