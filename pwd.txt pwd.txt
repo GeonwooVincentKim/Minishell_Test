@@ -1,0 +1,3 @@
+/home/geonwkim/minishell/minishell_v2
+/home/geonwkim/minishell/minishell_v2
+/home/geonwkim/minishell/minishell_v2
