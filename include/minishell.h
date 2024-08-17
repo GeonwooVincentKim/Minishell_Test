@@ -3,6 +3,9 @@
 
 # include <stddef.h>
 # include <stdbool.h>
+# include <signal.h>
+
+#include <sys/wait.h>
 
 # define ERROR_TOKENIZE 258
 # define ERROR_PARSE 258
@@ -14,6 +17,11 @@ typedef struct s_token		t_token;
 typedef enum e_token_kind	t_token_kind;
 typedef enum e_node_kind	t_node_kind;
 typedef struct s_node		t_node;
+
+extern int						last_status;
+extern bool						syntax_error;
+extern bool						readline_interrupted;
+extern volatile sig_atomic_t	sig;
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);
 size_t	ft_strlcat(char *dest, const char *src, size_t dest_size);
@@ -47,6 +55,7 @@ struct s_token {
 
 
 enum e_node_kind {
+	ND_PIPELINE,
 	ND_SIMPLE_CMD,
 	ND_REDIR_OUT,
 	ND_REDIR_IN,
@@ -66,8 +75,13 @@ struct s_node {
 	int			targetfd;
 	t_token		*filename;
 	t_token		*delimiter;
+	bool		is_delim_unquoted;
 	int			filefd;
 	int			stashed_targetfd;
+	// PIPELINE
+	int			inpipe[2];
+	int			outpipe[2];
+	t_node		*command;
 };
 
 // Redirecting output example
@@ -94,6 +108,7 @@ t_token	*word(char **rest, char *line);
 
 // expand.c
 void	expand(t_node *node);
+char	*expand_heredoc_line(char *line);
 
 // destructor.c
 void	free_node(t_node *node);
@@ -109,9 +124,21 @@ void	append_tok(t_token **tokens, t_token *tok);
 t_token	*tokdup(t_token *tok);
 
 // redirect.c
-int		open_redir_file(t_node *redirects);
+int		open_redir_file(t_node *node);
 void	do_redirect(t_node *redirects);
 void	reset_redirect(t_node *redirects);
 
+// pipe.c
+void	prepare_pipe(t_node *node);
+void	prepare_pipe_child(t_node *node);
+void	prepare_pipe_parent(t_node *node);
+
+// exec.c
+int		exec(t_node *node);
+
+// signal.h
+
+void	setup_signal(void);
+void	reset_signal(void);
 
 #endif
