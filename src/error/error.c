@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 08:56:30 by susami            #+#    #+#             */
-/*   Updated: 2023/01/05 22:13:55 by susami           ###   ########.fr       */
+/*   Updated: 2024/08/25 01:29:01 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "minishell.h"
 
 #define ERROR_PREFIX "minishell: "
+
+int	ft_dprintf(int fd, const char *format, ...);
 
 void	perror_prefix(void)
 {

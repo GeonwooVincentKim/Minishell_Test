@@ -62,6 +62,7 @@ SRCS     = src/main.c\
 		   src/lib/xpipe.c\
 		   src/lib/xclose.c\
 		   src/lib/xmalloc.c\
+		   src/lib/test.c
 
 OBJS     = $(SRCS:%.c=%.o)
 
