@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 08:55:36 by susami            #+#    #+#             */
-/*   Updated: 2023/01/05 11:42:43 by susami           ###   ########.fr       */
+/*   Updated: 2024/08/24 17:44:06 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ char	*resolve_pwd(char *oldpwd, char *path)
 	char	*dup;
 
 	if (*path == '/' || oldpwd == NULL)
-		strlcpy(newpwd, "/", PATH_MAX);
+		ft_strlcpy(newpwd, "/", PATH_MAX);
 	else
-		strlcpy(newpwd, oldpwd, PATH_MAX);
+		ft_strlcpy(newpwd, oldpwd, PATH_MAX);
 	while (*path)
 	{
 		if (*path == '/')
@@ -126,10 +126,10 @@ int	set_path(char *path, size_t path_size, char *arg)
 			builtin_error("cd", NULL, "HOME not set");
 			return (-1);
 		}
-		strlcpy(path, home, path_size);
+		ft_strlcpy(path, home, path_size);
 	}
 	else
-		strlcpy(path, arg, path_size);
+		ft_strlcpy(path, arg, path_size);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 09:17:34 by susami            #+#    #+#             */
-/*   Updated: 2023/01/05 11:09:19 by susami           ###   ########.fr       */
+/*   Updated: 2024/08/24 20:25:05 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,10 @@ struct s_context {
 	volatile sig_atomic_t	sig;
 	t_map					*envmap;
 };
+
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);
+size_t	ft_strlcat(char *dest, const char *src, size_t dest_size);
 
 // error.c
 void	perror_prefix(void);
@@ -251,5 +255,10 @@ void	map_printall(t_map *map);
 char	*xgetenv(const char *name);
 void	initenv(void);
 char	**get_environ(t_map *map);
+
+// test.c
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);
+size_t	ft_strlcat(char *dest, const char *src, size_t dest_size);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 08:56:33 by susami            #+#    #+#             */
-/*   Updated: 2023/01/05 13:19:09 by susami           ###   ########.fr       */
+/*   Updated: 2024/08/24 20:24:31 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static void	set_path(char *path, size_t pathsize,
 	bzero(path, pathsize);
 	end = strchr(*envpath, ':');
 	if (*envpath == end)
-		strlcpy(path, ".", pathsize);
+		ft_strlcpy(path, ".", pathsize);
 	else if (end)
 		strncpy(path, *envpath, end - *envpath);
 	else
-		strlcpy(path, *envpath, pathsize);
-	strlcat(path, "/", pathsize);
-	strlcat(path, filename, pathsize);
+		ft_strlcpy(path, *envpath, pathsize);
+	ft_strlcat(path, "/", pathsize);
+	ft_strlcat(path, filename, pathsize);
 	if (end == NULL)
 		*envpath = NULL;
 	else

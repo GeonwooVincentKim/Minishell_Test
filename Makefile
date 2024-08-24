@@ -9,6 +9,7 @@ INCLUDES = -I include -I$(RLDIR)/include
 CFLAGS   = -Wall -Wextra -Werror $(INCLUDES)
 LIBS     = -lreadline -L$(RLDIR)/lib
 SRCS     = src/main.c\
+		   src/test.c\
            src/error/error.c\
            src/error/error_exit.c\
            src/error/syntax_error.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 08:56:34 by susami            #+#    #+#             */
-/*   Updated: 2023/01/05 08:56:34 by susami           ###   ########.fr       */
+/*   Updated: 2024/08/24 17:46:09 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <string.h>
 #include <ctype.h>
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);
 
 void	append_char(char **s, char c)
 {
@@ -28,7 +30,7 @@ void	append_char(char **s, char c)
 	if (new == NULL)
 		fatal_error("malloc");
 	if (*s)
-		strlcpy(new, *s, size);
+		ft_strlcpy(new, *s, size);
 	new[size - 2] = c;
 	new[size - 1] = '\0';
 	if (*s)

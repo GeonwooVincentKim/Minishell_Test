@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_item.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: susami <susami@student.42tokyo.jp>         +#+  +:+       +#+        */
+/*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 08:56:28 by susami            #+#    #+#             */
-/*   Updated: 2023/01/05 08:56:28 by susami           ###   ########.fr       */
+/*   Updated: 2024/08/24 17:45:33 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	*item_get_string(t_item *item)
 	string = malloc(strsize);
 	if (string == NULL)
 		fatal_error("malloc");
-	strlcpy(string, item->name, strsize);
+	ft_strlcpy(string, item->name, strsize);
 	if (item->value)
 	{
-		strlcat(string, "=", strsize);
-		strlcat(string, item->value, strsize);
+		ft_strlcat(string, "=", strsize);
+		ft_strlcat(string, item->value, strsize);
 	}
 	return (string);
 }
