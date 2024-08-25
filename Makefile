@@ -24,6 +24,7 @@ SRCS     = src/main.c\
 		   src/builtin_unset.c\
 		   src/map.c\
 		   src/env.c\
+		   src/test.c
 
 OBJS     = $(SRCS:%.c=%.o)
 

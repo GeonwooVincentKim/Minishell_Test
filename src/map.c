@@ -45,11 +45,11 @@ char	*item_get_string(t_item *item)
 	string = malloc(strsize);
 	if (string == NULL)
 		fatal_error("malloc");
-	strlcpy(string, item->name, strsize);
+	ft_strlcpy(string, item->name, strsize);
 	if (item->value)
 	{
-		strlcat(string, "=", strsize);
-		strlcat(string, item->value, strsize);
+		ft_strlcat(string, "=", strsize);
+		ft_strlcat(string, item->value, strsize);
 	}
 	return (string);
 }

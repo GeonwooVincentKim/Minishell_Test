@@ -34,6 +34,10 @@ void	parse_error(const char *location, t_token **rest, t_token *tok);
 void	xperror(const char *location);
 void	builtin_error(const char *func, const char *name, const char *err);
 
+size_t	ft_strlen(const char *str);
+size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);
+size_t	ft_strlcat(char *dest, const char *src, size_t dest_size);
+
 // tokenize.c
 typedef struct s_token		t_token;
 enum e_token_kind {

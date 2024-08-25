@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include "minishell.h"
-
+#include <sys/wait.h>
 #include <string.h>
 
 char	*search_path(const char *filename);
@@ -46,9 +46,9 @@ char	*search_path(const char *filename)
 		if (end)
 			strncpy(path, value, end - value);
 		else
-			strlcpy(path, value, PATH_MAX);
-		strlcat(path, "/", PATH_MAX);
-		strlcat(path, filename, PATH_MAX);
+			ft_strlcpy(path, value, PATH_MAX);
+		ft_strlcat(path, "/", PATH_MAX);
+		ft_strlcat(path, filename, PATH_MAX);
 		if (access(path, X_OK) == 0)
 		{
 			char	*dup;
